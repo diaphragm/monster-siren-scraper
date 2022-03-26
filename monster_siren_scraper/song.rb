@@ -11,17 +11,14 @@ class MonsterSirenScraper
       raw[:name]
     end
 
-    def file_name
-      track_prefix = track_number.to_s.rjust(album.total_tracks.to_s.size, '0')
-      ext = 'mp3'
-      "#{track_prefix}. #{name}.#{ext}"
-    end
-
     def artists
       raw[:artists]
     end
 
-    def path
+    def path(ext = 'mp3')
+      track_prefix = track_number.to_s.rjust(album.total_tracks.to_s.size, '0')
+      file_name = "#{track_prefix}. #{name}.#{ext}"
+
       album.path + file_name
     end
 
@@ -40,6 +37,7 @@ class MonsterSirenScraper
     def save
       Fetcher.new(URI.parse(raw[:sourceUrl])).copy(path)
       add_tag_info
+      Fetcher.new(URI.parse(raw[:lyricUrl])).copy(path('lrc')) if raw[:lyricUrl]
     end
 
     def add_tag_info

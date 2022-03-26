@@ -6,6 +6,7 @@ require 'taglib'
 class MonsterSirenScraper
   CACHE_DIR = Pathname.new('cache/')
   SAVE_DIR = Pathname.new('download/')
+  FETCH_INTERVAL_TIME = 5 # seconds
 
   def scrape
     setup
@@ -13,8 +14,6 @@ class MonsterSirenScraper
     albums = Api.new.albums
     albums.map{|a| a[:cid] }.each do |album_id|
       Album.new(album_id).save
-
-      sleep 5
     end
   end
 

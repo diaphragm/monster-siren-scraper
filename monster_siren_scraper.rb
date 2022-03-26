@@ -1,7 +1,6 @@
 require 'net/http'
 require 'bundler/setup'
 Bundler.require
-require 'taglib'
 
 class MonsterSirenScraper
   CACHE_DIR = Pathname.new('cache/')
@@ -28,7 +27,7 @@ class MonsterSirenScraper
   end
 end
 
-require_relative './monster_siren_scraper/fetcher.rb'
-require_relative './monster_siren_scraper/api.rb'
-require_relative './monster_siren_scraper/song.rb'
-require_relative './monster_siren_scraper/album.rb'
+require_relative 'monster_siren_scraper/fetcher.rb'
+require_relative 'monster_siren_scraper/api.rb'
+require_relative 'monster_siren_scraper/song.rb'
+require_relative 'monster_siren_scraper/album.rb'

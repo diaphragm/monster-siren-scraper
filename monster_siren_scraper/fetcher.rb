@@ -25,7 +25,9 @@ class MonsterSirenScraper
     def get
       res = Net::HTTP.get(@uri)
       write(res)
+
       sleep FETCH_INTERVAL_TIME
+
       res
     end
 

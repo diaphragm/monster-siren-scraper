@@ -12,8 +12,11 @@ class MonsterSirenScraper
     setup
 
     albums = Api.new.albums
-    albums.map{|a| a[:cid] }.each do |album_id|
-      Album.new(album_id).save
+    total_albums_count = albums.size
+
+    albums.each.with_index(1) do |album, i|
+      puts "#{i}/#{total_albums_count}\t#{album[:name]}"
+      Album.new(album[:cid]).save
     end
   end
 

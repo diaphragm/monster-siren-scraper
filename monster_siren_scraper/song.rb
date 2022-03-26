@@ -45,7 +45,7 @@ class MonsterSirenScraper
         tag = file.id3v2_tag
 
         tag.title = name
-        tag.artist = artists.join("\0")
+        tag.artist = artists.join(";")
         tag.album = album.name
         tag.track = track_number
         tag.add_frame(

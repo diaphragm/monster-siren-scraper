@@ -2,7 +2,6 @@
 
 source "https://rubygems.org"
 
-gem 'uri'
 gem 'pathname'
 gem 'json'
 gem 'digest'

@@ -6,7 +6,6 @@ GEM
     json (2.6.1)
     pathname (0.2.0)
     taglib-ruby (1.1.0)
-    uri (0.11.0)
 
 PLATFORMS
   x64-mingw-ucrt
@@ -18,7 +17,6 @@ DEPENDENCIES
   json
   pathname
   taglib-ruby (~> 1.1)
-  uri
 
 BUNDLED WITH
    2.3.3

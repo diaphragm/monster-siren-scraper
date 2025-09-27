@@ -23,12 +23,23 @@ class MonsterSirenScraper
     end
 
     def get
+      @retry_count = 0
+
       res = Net::HTTP.get(@uri)
       write(res)
 
       sleep FETCH_INTERVAL_TIME
 
       res
+    rescue Net::OpenTimeout, Net::ReadTimeout, Errno::ECONNRESET => e
+      if @retry_count >= 10
+        raise e
+      else
+        @retry_count += 1
+        pp "Retry #{@retry_count} times..."
+        sleep FETCH_INTERVAL_TIME
+        retry
+      end
     end
 
     def copy(to_path)
